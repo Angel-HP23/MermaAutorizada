@@ -1,5 +1,4 @@
 package com.femsa.oxxo.mermaautorizada.repository;
 
-public class XxmapPermisoMermaPlazaRepository {
-
+public interface XxmapPermisoMermaPlazaRepository {
 }
