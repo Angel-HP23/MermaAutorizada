@@ -14,5 +14,5 @@ public class XxmapLimitesMermaServiceImpl implements IxxmapLimitesMermaService {
     public XxmapLimitesMermaServiceImpl(XxmapLimitesMermaRepository xxmapLimitesMermaRepository) {
         this.xxmapLimitesMermaRepository = xxmapLimitesMermaRepository;
     }
-
+    
 }
