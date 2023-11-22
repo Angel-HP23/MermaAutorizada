@@ -38,7 +38,7 @@ public class XxmapLimitesMerma {
     @Column(name="CREATION_DATE", nullable= false)
     private Date creationDate;
 
-    @Column(name="modifiedBy", length=50, nullable= false)
+    @Column(name="MODIFIED_BY", length=50, nullable= false)
     private String modifiedBy;
 
     @Column(name="MODIFIED_DATE", nullable= false)
