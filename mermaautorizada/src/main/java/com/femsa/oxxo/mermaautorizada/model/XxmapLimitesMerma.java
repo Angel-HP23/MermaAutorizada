@@ -2,12 +2,7 @@ package com.femsa.oxxo.mermaautorizada.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -16,9 +11,10 @@ import lombok.Data;
 @Table(name = "MAP_LIMITES_MERMA")
 public class XxmapLimitesMerma {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "MAP_LIMITES_MERMA_LIMITES_MERMA_ID_SEQ", sequenceName = "MAP_LIMITES_MERMA_LIMITES_MERMA_ID", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MAP_LIMITES_MERMA_LIMITES_MERMA_ID_SEQ")
     @Column(name = "LIMITES_MERMA_ID")
-    private Long limitesMermaId;
+    private Integer limitesMermaId;
 
     @Column(name="RANGO_INICIAL", nullable= false)
     private Integer rangoIncial;
