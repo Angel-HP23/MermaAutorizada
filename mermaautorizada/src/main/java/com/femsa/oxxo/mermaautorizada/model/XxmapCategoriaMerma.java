@@ -4,23 +4,19 @@ import lombok.Data;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name="MAP_CATEGORIA_MERMA")
 public class XxmapCategoriaMerma {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="DIVISON")
+    @SequenceGenerator(name = "MAP_CATEGORIA_MERMA_DIVSION_SEQ", sequenceName = "MAP_CATEGORIA_MERMA_DIVSION", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MAP_CATEGORIA_MERMA_DIVSION_SEQ")
+    @Column(name="DIVISION")
     private Long divisionId;
 
-    @Column(name="MEMERMA_AUTORIZADA", nullable=false)
+    @Column(name="MERMA_AUTORIZADA", nullable=false)
     private Integer mermaAutorizada;
 
     @Column(name="REGISTRO_ACTIVO", nullable=false)
@@ -37,4 +33,5 @@ public class XxmapCategoriaMerma {
 
     @Column(name="MODIFIED_DATE", nullable=false)
     private Date modifiedDate;
-}
+
+}//end class
