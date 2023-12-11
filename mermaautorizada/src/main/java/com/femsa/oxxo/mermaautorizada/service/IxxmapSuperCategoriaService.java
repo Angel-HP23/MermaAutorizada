@@ -11,4 +11,8 @@ public interface IxxmapSuperCategoriaService {
 
     XxmapSuperCategoria insertSuperCategoria(InsertSuperCategoriaRequestImpl insertSuperCategoriaRequest) throws Exception//end insertSuperCategoria
     ;
+
+    boolean isValidDeleteSuperCategoria(Long categoriaId);
+
+    void deleteSuperCategoria(Long categoriaId) throws Exception;
 }
