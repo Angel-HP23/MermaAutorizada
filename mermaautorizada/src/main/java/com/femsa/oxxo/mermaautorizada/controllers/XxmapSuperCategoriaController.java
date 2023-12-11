@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/merma")
+@RequestMapping("api/supercategoria")
 @CrossOrigin("http://localhost:4200/")
 public class XxmapSuperCategoriaController {
 
@@ -41,6 +41,21 @@ public class XxmapSuperCategoriaController {
         } catch (Exception e) {
             logger.error("Error al insertar categoria: " + e.getMessage(), e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> xxmapSuperCategoriaDelete(@PathVariable Long id) {
+        try {
+            if (ixxmapSuperCategoriaService.isValidDeleteSuperCategoria(id)) {
+                ixxmapSuperCategoriaService.deleteSuperCategoria(id);
+
+                return ResponseEntity.ok("Eliminar super categoria con ID " + id + " (Borrado lógico con exito)");
+            } else {
+                return ResponseEntity.status(400).body("La super categoria con ID " + id + " no existe");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Error al intentar realizar el borrado lógico");
         }
     }
 }//end class
