@@ -11,7 +11,7 @@ public interface XxmapLimitesMermaRepository extends JpaRepository<XxmapLimitesM
 
     XxmapLimitesMerma save(InsertLimiteRequestImpl insertLimiteRequest);
 
-    Optional<XxmapLimitesMerma> findByRangoIncialAndRangoFinalAndRegistroActivo(Integer rangoInicial, Integer rangoFinal, Integer registroActivo);
+    Optional<XxmapLimitesMerma> findByRangoInicialAndRangoFinalAndRegistroActivo(Integer rangoInicial, Integer rangoFinal, Integer registroActivo);
 
 
 }

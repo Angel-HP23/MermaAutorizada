@@ -11,6 +11,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class XxmapSuperCategoriaServiceImpl implements IxxmapSuperCategoriaService {
@@ -24,7 +25,12 @@ public class XxmapSuperCategoriaServiceImpl implements IxxmapSuperCategoriaServi
     @Override
     public List<XxmapSuperCategoria> findAllXxmapSuperCategoria() {
         try {
-            return xxmapSuperCategoriaRepository.findAll();
+            List<XxmapSuperCategoria> superCategoriasActivas = xxmapSuperCategoriaRepository.findAll();
+            List<XxmapSuperCategoria> listSuperCategoria = superCategoriasActivas.stream()
+                    .filter(superCategoria -> superCategoria.getRegistroActivo() == 1)
+                    .collect(Collectors.toList());
+
+            return listSuperCategoria;
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -38,6 +44,7 @@ public class XxmapSuperCategoriaServiceImpl implements IxxmapSuperCategoriaServi
 
             nuevaSuperCategoria.setSuperCategoria(insertSuperCategoriaRequest.getSuperCategoria());
             nuevaSuperCategoria.setEmpoderamientoMerma(insertSuperCategoriaRequest.getEmpoderamientoMerma());
+            nuevaSuperCategoria.setRegistroActivo(1);
 
             logger.info("Datos recibidos correctamente: " + nuevaSuperCategoria);
 
@@ -49,4 +56,21 @@ public class XxmapSuperCategoriaServiceImpl implements IxxmapSuperCategoriaServi
         }
     }//end insertSuperCategoria
 
+    @Override
+    public boolean isValidDeleteSuperCategoria(Long categoriaId) {
+        return xxmapSuperCategoriaRepository.existsById(categoriaId);
+    }
+
+    @Override
+    public void deleteSuperCategoria(Long categoriaId) throws Exception {
+       try {
+           xxmapSuperCategoriaRepository.findById(categoriaId)
+                   .ifPresent(superCategoria -> {
+                       superCategoria.setRegistroActivo(0);
+                       xxmapSuperCategoriaRepository.save(superCategoria);
+                   });
+       } catch (Exception e) {
+           throw new Exception("Error al eliminar super categoria");
+       }
+    }
 }//end class

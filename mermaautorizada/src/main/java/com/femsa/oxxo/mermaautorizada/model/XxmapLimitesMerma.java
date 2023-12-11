@@ -17,7 +17,7 @@ public class XxmapLimitesMerma {
     private Integer limitesMermaId;
 
     @Column(name="RANGO_INICIAL", nullable= false)
-    private Integer rangoIncial;
+    private Integer rangoInicial;
 
     @Column(name="RANGO_FINAL", nullable= false)
     private Integer rangoFinal;
