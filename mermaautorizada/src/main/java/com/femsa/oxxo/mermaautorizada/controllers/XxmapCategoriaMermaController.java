@@ -50,7 +50,7 @@ public class XxmapCategoriaMermaController {
         try {
             if (ixxmapCategoriaMermaService.isValidDeleteCategoria(id)) {
                 ixxmapCategoriaMermaService.deleteCategoriaMerma(id);
-                return ResponseEntity.ok("Eliminar categoria con ID " + id + "(Borrado lógico con exito");
+                return ResponseEntity.ok("Eliminar categoria con ID " + id + "(Borrado lógico con exito)");
             } else {
                 return ResponseEntity.status(404).body("La categoria con ID " + id + " no existe");
             }

@@ -20,4 +20,7 @@ public class XxmapSuperCategoria {
     @Column(name = "EMPODERAMIENTO_MERMA")
     private String empoderamientoMerma;
 
+    @Column(name="REGISTRO_ACTIVO", nullable=false)
+    private Integer registroActivo;
+
 }//end class
