@@ -83,7 +83,7 @@ public class XxmapLimitesMermaServiceImpl implements IxxmapLimitesMermaService {
     public boolean isValidInsertLimite(InsertLimiteRequestImpl insertLimiteRequest) throws Exception {
         boolean result = true;
         XxmapLimitesMerma nuevoLimiteMerma = new XxmapLimitesMerma();
-        Optional<XxmapLimitesMerma> tmp = xxmapLimitesMermaRepository.findByRangoIncialAndRangoFinalAndRegistroActivo(insertLimiteRequest.getRangoInicial(), insertLimiteRequest.getRangoFinal(), nuevoLimiteMerma.getRegistroActivo());
+        Optional<XxmapLimitesMerma> tmp = xxmapLimitesMermaRepository.findByRangoInicialAndRangoFinalAndRegistroActivo(insertLimiteRequest.getRangoInicial(), insertLimiteRequest.getRangoFinal(), nuevoLimiteMerma.getRegistroActivo());
         if(tmp.isPresent()){
             result = false;
         }
@@ -103,7 +103,7 @@ public class XxmapLimitesMermaServiceImpl implements IxxmapLimitesMermaService {
 
             XxmapLimitesMerma nuevoLimiteMerma = new XxmapLimitesMerma();
 
-            nuevoLimiteMerma.setRangoIncial(insertLimiteRequest.getRangoInicial());
+            nuevoLimiteMerma.setRangoInicial(insertLimiteRequest.getRangoInicial());
 
 
             nuevoLimiteMerma.setRangoFinal(insertLimiteRequest.getRangoFinal());
